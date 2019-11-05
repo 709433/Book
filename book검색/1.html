@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p></p>
+    <h1>이미지</h1>
+   
+    <p></p>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
+    
+
+                $.ajax({
+        method: "GET",
+        url: "https://dapi.kakao.com/v2/search/image" ,
+        data: { query: "이효리"},   
+        headers: { Authorization: "KakaoAK 09f3673bad3a9aff09c1cd572824b833" }
+    })
+            
+        .done(function (msg) {
+            console.log(msg.documents[0].collection);
+            console.log(msg.documents[0].image_url);
+            $("p").append("<strong>" + msg.documents[0].collection+ "</strong>");
+            $("p").append("<img src='" + msg.documents[0].image_url + "'/>");
+     });
+
+    </script>
+    
+</body>
+</html>
